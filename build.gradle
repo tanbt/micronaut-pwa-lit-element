@@ -5,11 +5,11 @@ task copyClientResources(dependsOn: ':client:build') {
 copyClientResources.doFirst {
     copy {
         from "${project(':client').buildDir}/es5-bundled" // make sure path is correct
-        into "${project(':server').buildDir}/resources/public"
+        into "${project(':server').buildDir}/resources/main/public"
     }
 }
 
-task assembleBuilds(dependsOn: ['copyClientResources', ':server:shadowJar']) { 
+task assembleBuilds(dependsOn: ['copyClientResources', ':server:shadowJar']) {
     group = 'build'
     description = 'Build combined server & client JAR'
 }
