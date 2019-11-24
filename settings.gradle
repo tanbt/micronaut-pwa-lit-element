@@ -9,3 +9,4 @@
 
 rootProject.name = 'micronaut-pwa-lit-element'
 include "server"
+include "client"
