@@ -12,7 +12,7 @@ In project root:
 
 ## Build
 In project root:
-* `gradle assembleBuilds`
+* `gradle buildAll` (why I need to run this twice?)
 * `java -jar server/build/libs/server-0.1-all.jar`
 
 Access http://localhost:8080

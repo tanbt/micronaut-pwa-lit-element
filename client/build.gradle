@@ -1,3 +1,6 @@
+import org.gradle.internal.logging.text.StyledTextOutputFactory;
+import static org.gradle.internal.logging.text.StyledTextOutput.Style;
+
 plugins {
   id "com.moowork.node" version "1.3.1"
 }
@@ -8,13 +11,20 @@ plugins {
 //     download = true
 // }
 
-task start(type: NpmTask) {
+npm_install() {
+  if (file('node_modules').exists()) {
+    def out = services.get(StyledTextOutputFactory).create("NPM INSTALL")
+    out.withStyle(Style.SuccessHeader).println "node_modules existed. Skip re-installing it..."
+  }
+}
+
+task start(type: NpmTask, dependsOn: 'npm_install') {
     group = 'application'
     description = 'Run the client app'
     args = ['start']
 }
 
-task build(type: NpmTask) {
+task build(type: NpmTask, dependsOn: 'npm_install') {
     group = 'build'
     description = 'Build the client bundle'
     args = ['run', 'build']
