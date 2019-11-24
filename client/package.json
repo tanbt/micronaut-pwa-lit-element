@@ -1,0 +1,21 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "A simple lit-element project to say hello",
+  "main": "index.js",
+  "scripts": {
+    "test": "polymer test"
+  },
+  "keywords": [
+    "lit-element",
+    "hello"
+  ],
+  "author": "Tan Bui <trungtanbui@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lit-element": "^2.2.1"
+  },
+  "devDependencies": {
+    "polymer-cli": "^1.9.11"
+  }
+}
