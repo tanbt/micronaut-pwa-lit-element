@@ -1,0 +1,30 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/my-app.js",
+  "sources": [
+    "images/**/*"
+  ],
+  "extraDependencies": [
+    "node_modules/@webcomponents/webcomponentsjs/**"
+  ],
+  "builds": [
+    {
+      "name": "es5-bundled",
+      "js": {
+        "compile": "es5",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    }
+  ],
+  "moduleResolution": "node",
+  "npm": true
+}

@@ -4,7 +4,8 @@
   "description": "A simple lit-element project to say hello",
   "main": "index.js",
   "scripts": {
-    "test": "polymer test"
+    "start": "polymer serve --npm",
+    "build": "polymer build"
   },
   "keywords": [
     "lit-element",
