@@ -26,12 +26,15 @@ class MyApp extends LitElement {
     `;
   }
 
-  handleTyping(e) {
+  async handleTyping(e) {
     const nameTxt = this.renderRoot.querySelector("#name")
-    this.getData(nameTxt.value).then(text => {
-      console.log(text);
-      this.renderRoot.querySelector("#output").innerHTML = text;
-    })
+    let result = "";
+    try {
+      result = await this.getData(nameTxt.value);
+    } catch (err) {
+      result = `Sorry ${nameTxt.value}, the network is unavailable now.`
+    }
+    this.renderRoot.querySelector("#output").innerHTML = result;
   }
 
   async getData(name) {
