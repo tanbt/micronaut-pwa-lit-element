@@ -16,6 +16,20 @@ class MyApp extends LitElement {
       #output {
         margin: 10px 0;
       }
+
+      .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 2s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
     `;
   }
 
@@ -28,13 +42,16 @@ class MyApp extends LitElement {
 
   async handleTyping(e) {
     const nameTxt = this.renderRoot.querySelector("#name")
+    const outputDiv = this.renderRoot.querySelector("#output");
+    outputDiv.classList.add("loader");
     let result = "";
     try {
       result = await this.getData(nameTxt.value);
     } catch (err) {
       result = `Sorry ${nameTxt.value}, the network is unavailable now.`
     }
-    this.renderRoot.querySelector("#output").innerHTML = result;
+    outputDiv.classList.remove("loader");
+    outputDiv.innerHTML = result;
   }
 
   async getData(name) {
