@@ -5,6 +5,16 @@
     <title>My app</title>
     <base href="/">
     <link rel="icon" href="images/favicon.ico">
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('service-worker.js', {
+            scope: '/',
+          });
+        });
+      }
+    </script>
   </head>
   <body>
     <my-app appTitle="my app"></my-app>
