@@ -43,8 +43,9 @@ class MyApp extends LitElement {
   async handleTyping(e) {
     const nameTxt = this.renderRoot.querySelector("#name")
     const outputDiv = this.renderRoot.querySelector("#output");
-    outputDiv.classList.add("loader");
     let result = "";
+    outputDiv.innerHTML = result;
+    outputDiv.classList.add("loader");
     try {
       result = await this.getData(nameTxt.value);
     } catch (err) {

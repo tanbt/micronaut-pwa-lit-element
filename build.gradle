@@ -9,15 +9,17 @@ copyClientResources.doFirst {
     }
 }
 
-task buildAll(dependsOn: ['copyClientResources', ':server:shadowJar']) {
+task buildClient(dependsOn: 'copyClientResources') {
     group = 'build'
-    description = 'Build combined server & client JAR'
+    description = 'Build combined client resources'
 }
 
-task test {
-
+task buildServer(dependsOn: ':server:shadowJar') {
+    group = 'build'
+    description = 'Build combined server JAR'
 }
 
-task check {
-
+task buildAll(dependsOn: ['buildClient', 'buildServer']) {
+    group = 'build'
+    description = 'Build client resources and server JAR'
 }
